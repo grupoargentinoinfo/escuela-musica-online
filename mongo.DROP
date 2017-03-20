@@ -1,0 +1,4 @@
+$ mongo db
+> db.dropDatabase()
+
+SALIR CON CTRL + C

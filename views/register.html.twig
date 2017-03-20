@@ -1,0 +1,25 @@
+{% extends "layout.html.twig" %}
+{% block content %}
+        <div class="row">
+			<div class="col-sm-6 col-md-4 col-md-offset-4">
+				<h1 class="text-center login-title">Registration Details</h1>
+					<div class="signup-wall">
+						<form class='form-signin' action='/signup' method='POST'>
+							<input type='hidden' name='tipo' value='{{ tipo }}' />
+							<input type='text' name='username' class='form-control' placeholder='Username' required  autofocus />
+							<input type='password' name='password' class='form-control nomargin' placeholder='Password' required />
+							<input type='email' name='email' class='form-control' placeholder='Email' required />
+							<input type='text' name='firstName' class='form-control' placeholder='First Name' required />
+							<input type='text' name='lastName' class='form-control' placeholder='Last Name' required />
+							<button class='btn btn-lg btn-primary btn-block' type='submit'>Register</button>
+							<span class="clearfix"></span>
+						</form>
+					</div>{#.signup-wall#}
+					<div id="message">
+						{% if message %}
+							<h1 class="text-center error-message">{{message}}</h1>
+						{% endif %}
+					</div>{#.message#}
+			</div>{# .col-sm-6.col-md-4.col-md-offset-4 #}
+		</div>{# .row #}
+{% endblock %}
