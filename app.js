@@ -24,37 +24,6 @@ var fs = require('fs');
 
 
 
-/* Servidor Peerjs*/
-/*var options = {
-    debug: true,
-    // allow_discovery: true,
-    // ssl: {
-    //     key: fs.readFileSync('private.key'),
-    //     cert: fs.readFileSync('certificate.crt')
-    // },
-};
-
-var ExpressPeerServer = require('peer').ExpressPeerServer;
-peerServer = ExpressPeerServer(app, options)
-app.use('/api', peerServer);
-
-peerServer.on('connection', function(id) {
-    console.log(id)
-  console.log(server._clients)
-});
-
-peerServer.on('disconnect', function(id) {
-    console.log(id + "deconnected")
-});
-
-*/
-
-
-
-
-
-
-
 /*view engine setup*/
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
