@@ -21,7 +21,10 @@ $(document).ready(function(){
   });
 
   // Haciendo un llamado al servidor
-  peer.emit('getListPeers');
+  peer.on('getListPeers', function(data){
+    console.log("getListPeers");
+    console.log(data);
+  });
 
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
