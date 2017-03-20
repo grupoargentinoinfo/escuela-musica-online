@@ -6,7 +6,8 @@
   "author": "Mostafa Eweda <mo.eweda@gmail.com>",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "postinstall": "npm install --prefix ./client"
   },
   "dependencies": {
     "async": "~0.2.8",
