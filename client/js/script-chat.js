@@ -20,6 +20,9 @@ $(document).ready(function(){
     $('#id').text(peer.id);
   });
 
+  // Haciendo un llamado al servidor
+  peer.emit('getListPeers');
+
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
   function getVideo(callback){
