@@ -174,7 +174,7 @@ $(document).ready(function(){
 
   function getListAllPeers(){
     var http = _secure ? "https://" : "http://";
-    $.get(http + _host + ":"+ _port +"/listAllPeers", function(data, textStatus, xhr) {
+    $.get(http + _host + "/listAllPeers", function(data, textStatus, xhr) {
       console.log(data);
     });  
   }
