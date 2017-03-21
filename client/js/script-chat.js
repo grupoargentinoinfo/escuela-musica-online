@@ -2,10 +2,20 @@ $(document).ready(function(){
   var messages = [];
   var peer_id, name, conn;
 
+  /* Producción */
+  var _host = "emo-peerjs-server.herokuapp.com";
+  var _port = 443;
+  var _secure = true;
+
+  /* Desarrollo*/
+  // var _host = "localhost";
+  // var _port = 9000;
+  // var _secure = false;
+
 //port: location.port || (location.protocol === 'https:' ? 443 : 80),
   var peer = new Peer({
-    host: "emo-peerjs-server.herokuapp.com",
-    port: 443,
+    host: _host,
+    port: _port,
     secure: true,
     key: 'peerjs',
     debug: 3, // 0: no prints logs, 3: print all logs
@@ -20,12 +30,7 @@ $(document).ready(function(){
     $('#id').text(peer.id);
   });
 
-  // Haciendo un llamado al servidor
-  peer.on('getListPeers', function(data){
-    console.log("getListPeers");
-    console.log(data);
-  });
-
+  
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
   function getVideo(callback){
@@ -160,5 +165,19 @@ $(document).ready(function(){
       onReceiveStream(stream, 'peer-camera');
     });
   }
+
+
+  // Get all peers
+  $("#getAllPeers").click(function(event) {
+    getListAllPeers();
+  });
+
+  function getListAllPeers(){
+    var http = _secure ? "https://" : "http://";
+    $.get(http + _host + ":"+ _port +"/listAllPeers", function(data, textStatus, xhr) {
+      console.log(data);
+    });  
+  }
+  
 
 });

@@ -32,8 +32,8 @@
 
       <div id="messenger-wrapper">
         <div class="container">
-          <h1>Peer Messenger</h1>
-
+          <h1>Chat</h1>
+          <a href="#" id="getAllPeers">Get all peers</a><br>
           <!--
             Display the login form and messaging form.
             This allows the user to send messages to their peer and make a video call.
@@ -70,11 +70,12 @@
 {% endblock %}
 
 {% block endBody %}
+
 <script id="messages-template">
-    {% for message in messages %}
+  {% for message in messages %}
     <li>
         <span class="from">{{message.from}}:</span> {{message.text}}
     </li>
-    {% endfor %}
+  {% endfor %}
 </script>
 {% endblock %}
