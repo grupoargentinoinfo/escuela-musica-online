@@ -26,6 +26,7 @@ $(document).ready(function(){
     ]}*/
   });
 
+  // Se ejecuta al entrar...
   peer.on('open', function(){
     $('#id').text(peer.id);
   });
@@ -66,7 +67,7 @@ $(document).ready(function(){
     $('#connect').addClass('hidden');
   });
 
-  /* Conectar */
+  /* Cuando se conecta con un peer */
   peer.on('connection', function(connection){
     conn = connection;
     peer_id = connection.peer;
@@ -174,7 +175,7 @@ $(document).ready(function(){
 
   function getListAllPeers(){
     var http = _secure ? "https://" : "http://";
-    $.get(http + _host + "/listAllPeers", function(data, textStatus, xhr) {
+    $.post(http + _host + "/listAllPeers", function(data, textStatus, xhr) {
       console.log(data);
     });  
   }
