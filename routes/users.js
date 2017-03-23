@@ -28,9 +28,10 @@ module.exports = function(passport){
         });
     });
 
-    // PeerJs Servidor propio
-    router.get('/stream', function(req, res) {
-      res.render('stream/peerjs.html.twig');
+
+    // PeerJs Servidor propio con autenticación entrar!
+    router.get('/stream', isAuthenticated, function(req, res) {
+      res.render('stream/peerjs.html.twig', { user: req.user });
     });
 
     // PeerJs NO ANDA

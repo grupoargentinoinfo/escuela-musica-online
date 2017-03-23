@@ -1,4 +1,6 @@
 $(document).ready(function(){
+  var usuario_actual = new Usuario('maru', 'asd', '');
+
   var messages = [];
   var peer_id, name, conn;
 
@@ -29,6 +31,10 @@ $(document).ready(function(){
   // Se ejecuta al entrar...
   peer.on('open', function(){
     $('#id').text(peer.id);
+    
+    // TODO: Faltaría enviar el cambio al servidor node.js
+    usuario_actual.setPeerId(peer.id); // Actualiza el peer_id del usuario conectado
+
   });
 
   
@@ -71,6 +77,7 @@ $(document).ready(function(){
   peer.on('connection', function(connection){
     conn = connection;
     peer_id = connection.peer;
+
     conn.on('data', handleMessage); // Recibir mensajes
 
     $('#peer_id').addClass('hidden').val(peer_id);
@@ -170,12 +177,12 @@ $(document).ready(function(){
 
   // Get all peers
   $("#getAllPeers").click(function(event) {
-    getListAllPeers();
+    countPeers();
   });
 
-  function getListAllPeers(){
+  function countPeers(){
     var http = _secure ? "https://" : "http://";
-    $.post(http + _host + "/listAllPeers", function(data, textStatus, xhr) {
+    $.get(http + _host + "/countPeers", function(data, textStatus, xhr) {
       console.log(data);
     });  
   }
